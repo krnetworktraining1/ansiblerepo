@@ -1,0 +1,5 @@
+- name: copy jinja template file
+  template:
+          src: apache.conf.j2
+          dest: "{{ web_conf }}"
+  notify: restart_apache

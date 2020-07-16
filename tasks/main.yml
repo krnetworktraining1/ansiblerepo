@@ -1,0 +1,22 @@
+- name: install httpd
+  yum:
+        name: "{{ web_svc }}"
+        state: installed
+
+- name: start  httpd
+  service:
+
+          name: "{{ web_svc }}"
+          state: started
+
+
+- name: include custom var fike
+  include_vars:  abc.yml
+
+- name: copy  source code  
+  copy:
+         src: code/
+         dest: "{{ web_root }}"
+
+- name: import another tasks file
+  import_tasks: apache.yml
